@@ -1,5 +1,6 @@
 import React from 'react'
 import LanguagesDisplay from '../components/LanguagesDisplay'
+import {Route} from 'react-router-dom'
 
 export default class MainContainer extends React.Component{
   constructor(props){
@@ -10,7 +11,9 @@ export default class MainContainer extends React.Component{
 
   render(){
     return(
-      <LanguagesDisplay/>
+      <div>
+        <LanguagesDisplay/>
+      </div>
     )
   }
 }
