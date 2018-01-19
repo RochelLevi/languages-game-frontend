@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import {Route} from 'react-router-dom'
 import Login from '../components/Login'
+import Register from '../components/Register'
 import Profile from '../components/Profile'
 import Navbar from '../components/Navbar'
 import MainContainer from './MainContainer'
@@ -28,6 +29,7 @@ class App extends Component {
           <Navbar />
           <Route exact path="/" component={MainContainer}/>
           <Route path="/login" component={Login}/>
+          <Route path="/register" component={Register}/>
           <Route path="/users/:id" render={Profile}/>
           <Route exact path="/languages/:id" component={Game}/>
         </div>
