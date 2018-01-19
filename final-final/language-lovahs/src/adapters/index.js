@@ -1,4 +1,4 @@
-// export const fetchUser = () =>{
-//   fetch('http://localhost:3000/users/')
-//   .then(resp => resp.json())
-// }
+export const fetchUsers = () =>{
+  return fetch('http://localhost:3000/api/users')
+  .then(resp => resp.json())
+}
