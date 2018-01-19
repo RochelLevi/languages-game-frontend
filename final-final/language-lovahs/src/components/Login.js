@@ -1,6 +1,36 @@
 import React from 'react'
 
-const Login = (props) => {
+
+class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      error: false,
+      fields: {
+        username: '',
+        password: ''
+      }
+    };
+  }
+
+  handleChange = e => {
+    const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
+    this.setState({ fields: newFields });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    api.auth.login(this.state.fields).then(data => {
+      console.log('response is', data);
+      if (data.error) {
+        this.setState({ error: true });
+      } else {
+        this.props.handleLogin(data);
+        this.props.history.push('/');
+      }
+    });
+  };
+
   return(
   <div class="ui middle aligned center aligned grid">
     <div class="column">
