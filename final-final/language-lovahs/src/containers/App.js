@@ -5,7 +5,7 @@ import Login from '../components/Login'
 import Profile from '../components/Profile'
 import Navbar from '../components/Navbar'
 import MainContainer from './MainContainer'
-import Game from '../components/Game'
+import Game from '../containers/Game'
 import {fetchUsers} from '../adapters/index'
 
 class App extends Component {
