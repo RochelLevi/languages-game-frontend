@@ -52,7 +52,7 @@ const WordPage = (props) => {
         </div>
       </div>
 
-      <button onClick={() => props.pageChange('translation')} >Next</button>
+      <button onClick={() => props.pageChange('spelling')} >Next</button>
 
     </div>
   )

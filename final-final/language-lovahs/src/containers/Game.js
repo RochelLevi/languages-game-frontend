@@ -3,7 +3,7 @@ import WordPage from '../components/WordPage'
 import DefPage from '../components/DefPage'
 import SpellingPage from '../components/SpellingPage'
 import WelcomePage from '../components/WelcomePage'
-
+import {getLangWords} from '../adapters/index.js'
 
 export default class Game extends React.Component {
   constructor(props){
@@ -13,15 +13,14 @@ export default class Game extends React.Component {
     this.state = {
       page: '',
       currentWord: {},
-      learnedWords: [{name: 'yiasu', english_translation: 'hello'}, {name: 'fruita', english_translation: 'fruit'}],
+      words: [],
+      learnedWords: [],
       wordPoints: 0,
     }
   }
 
-  // getWords = (json) => {
-  //   let words = json.words.splice(0, 5)
-  //   this.setState({learnedWords: words})
-  // }
+  getWords = (laguageId, userId) => {
+  }
 
   getLanguage(){
     const arr = this.props.history.location.pathname.split('/')
@@ -30,8 +29,12 @@ export default class Game extends React.Component {
 
 
   componentWillMount(){
-    this.setState({page: 'welcome', currentWord: this.state.learnedWords[0]})
+    this.setState({page: 'welcome'})
+  }
 
+  componentDidMount(){
+    getLangWords(1, 1)
+    .then(json => this.setState({page: 'welcome', words: json.words}))
   }
 
   setCurrentWord = (nextWord) =>{
@@ -52,18 +55,27 @@ export default class Game extends React.Component {
   }
 
   render(){
-
     switch (this.state.page) {
       case 'welcome':
-        return <WelcomePage currentWord={this.state.currentWord} pageChange={this.handlePageChange} />
+        return <WelcomePage
+          currentWord={this.state.currentWord}
+          pageChange={this.handlePageChange} />
       case 'def':
-        return <DefPage currentWord={this.state.currentWord} pageChange={this.handlePageChange} />
+        return <DefPage
+          currentWord={this.state.currentWord}
+          pageChange={this.handlePageChange} />
       case 'word':
-        return <WordPage currentWord={this.state.currentWord} pageChange={this.handlePageChange} />
+        return <WordPage
+          currentWord={this.state.currentWord}
+          pageChange={this.handlePageChange} />
       case 'translation':
-        return <WordPage currentWord={this.state.currentWord} pageChange={this.handlePageChange} />
+        return <WordPage
+          currentWord={this.state.currentWord}
+          pageChange={this.handlePageChange} />
       case 'spelling':
-        return <SpellingPage currentWord={this.state.currentWord} setCurrentWord={this.setCurrentWord} pageChange={this.handlePageChange} />
+        return <SpellingPage
+          currentWord={this.state.currentWord}
+          setCurrentWord={this.setCurrentWord} pageChange={this.handlePageChange} />
     }
 
     }
