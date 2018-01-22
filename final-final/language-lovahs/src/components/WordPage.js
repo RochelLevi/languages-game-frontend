@@ -3,7 +3,7 @@ import React from 'react'
 const WordPage = (props) => {
   return (
     <div>
-
+      <h1>{props.currentWord.name}</h1>
     <div style={{border: "1px solid rgb(85, 184, 71)", width: "250px", height: "35px"}}><input id="multi-select-1" type="checkbox" name="1" value="1" class="answer selected" disabled=""/><span class="choice-index-span">False.</span><i id="check" className="green check circle icon" style={{display: "inline-block"}}></i></div>
 
       <div class="ui form">

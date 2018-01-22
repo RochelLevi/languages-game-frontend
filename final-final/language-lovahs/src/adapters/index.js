@@ -14,6 +14,11 @@ export const fetchUser = (id) => {
     .then(resp => resp.json())
 }
 
+export const getLangWords = (languageId, userId) => {
+  // return fetch(`http://localhost:3000/api/users/${userId}`)
+  //   .then(resp => resp.json())
+}
+
 export const createUser = (userDetails) =>{
   return fetch('http://localhost:3000/api/users',
   {

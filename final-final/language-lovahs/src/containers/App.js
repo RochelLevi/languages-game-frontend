@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       users: [],
       languages: [],
-      currentUser: ''
+      currentUser: 1
     }
   }
 
@@ -25,21 +25,17 @@ class App extends Component {
     fetchLanguages().then(json => this.setState({languages: json}))
   }
 
-  getUserStats = (userName) => {
-    let user = this.state.users.find(u => {return u[0] === u.username})
-    console.log(user);
-  }
+
 
   render() {
-    console.log(this.state.users);
     return (
         <div>
           <Navbar />
           <Route exact path="/" component={Login}/>
           <Route path="/login" component={Login}/>
-          <Route path="/home" component={() => <MainContainer getUserStats={this.getUserStats}/>}/>
+          <Route path="/home" component={() => <MainContainer getUserStats={fetchUser}/>}/>
           <Route path="/register" component={Register}/>
-          <Route exact path="/languages/:id" component={Game}/>
+          <Route exact path="/languages/:id" component={() => <Game/>}/>
         </div>
     );
   }
