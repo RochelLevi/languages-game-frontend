@@ -5,15 +5,18 @@ import {Segment, Container} from 'semantic-ui-react'
 const TranslationPage = (props) => {
   return (
 
-    <div class ="ui stacked secondary segment">
-      <h1>{props.currentWord.name}</h1>
+    <div class="ui middle aligned center aligned grid">
+      <div class="column">
+    <h1>{props.currentWord.english_translation}</h1>
 
 
-      <div class="ui form">
+
+      <div class="ui large form">
+        <div class="ui stacked secondary segment">
         <div class="grouped fields">
           <label>How often do you use checkboxes?</label>
 
-          <Segment style={{'background-color': 'rgb(230, 243, 244)', width: "20%", height: "5%"}}>
+          <Segment style={{height: "5%"}}>
             <div class="field" >
               <div class="ui huge checkbox" >
                 <input type="radio" name="example2"/>
@@ -22,7 +25,7 @@ const TranslationPage = (props) => {
             </div>
           </Segment>
 
-          <Segment style={{'background-color': 'rgb(230, 243, 244)', width: "20%", height: "5%"}}>
+          <Segment style={{height: "5%"}}>
             <div class="field">
               <div class="ui huge checkbox">
                 <input type="radio" name="example2"/>
@@ -31,7 +34,7 @@ const TranslationPage = (props) => {
             </div>
           </Segment>
 
-          <Segment style={{'background-color': 'rgb(230, 243, 244)', width: "20%", height: "5%"}}>
+          <Segment style={{height: "5%"}}>
             <div class="field">
               <div class="ui huge checkbox">
                 <input type="radio" name="example2"/>
@@ -40,7 +43,7 @@ const TranslationPage = (props) => {
             </div>
           </Segment>
 
-          <Segment style={{'background-color': 'rgb(230, 243, 244)', width: "20%", height: "5%"}}>
+          <Segment style={{height: "5%"}}>
             <div class="field">
               <div class="ui huge checkbox">
                 <input type="radio" name="example2"/>
@@ -51,8 +54,12 @@ const TranslationPage = (props) => {
 
         </div>
       </div>
-
+      </div>
       <button onClick={() => props.pageChange('spelling')} >Next</button>
+    </div>
+
+
+
 
     </div>
   )

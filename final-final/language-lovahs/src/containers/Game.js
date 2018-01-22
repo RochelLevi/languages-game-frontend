@@ -36,8 +36,8 @@ export default class Game extends React.Component {
   componentDidMount(){
     getLangWords(1, 1)
     .then(json => this.setState({page: 'welcome', words: json.words, currentWord: json.words[0]}))
-  }
 
+  }
 
 
   handlePageChange = (nextPage) => {
@@ -54,6 +54,7 @@ export default class Game extends React.Component {
   }
 
   render(){
+    console.log(this.state.words)
     switch (this.state.page) {
       case 'welcome':
         return <WelcomePage
@@ -68,13 +69,13 @@ export default class Game extends React.Component {
           currentWord={this.state.currentWord}
           pageChange={this.handlePageChange} />
       case 'translation':
-        return <WordPage
+        return <TranslationPage
           currentWord={this.state.currentWord}
           pageChange={this.handlePageChange} />
       case 'spelling':
         return <SpellingPage
           currentWord={this.state.currentWord}
-          setCurrentWord={this.setCurrentWord} pageChange={this.handlePageChange} />
+          pageChange={this.handlePageChange} />
     }
 
     }
