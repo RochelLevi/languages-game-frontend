@@ -3,6 +3,7 @@ import WordPage from '../components/WordPage'
 import DefPage from '../components/DefPage'
 import SpellingPage from '../components/SpellingPage'
 import WelcomePage from '../components/WelcomePage'
+import TranslationPage from '../components/TranslationPage'
 import {getLangWords} from '../adapters/index.js'
 
 export default class Game extends React.Component {
@@ -34,20 +35,18 @@ export default class Game extends React.Component {
 
   componentDidMount(){
     getLangWords(1, 1)
-    .then(json => this.setState({page: 'welcome', words: json.words}))
+    .then(json => this.setState({page: 'welcome', words: json.words, currentWord: json.words[0]}))
   }
 
-  setCurrentWord = (nextWord) =>{
-    this.setState({currentWord: nextWord})
-  }
+
 
   handlePageChange = (nextPage) => {
-    let words = this.state.learnedWords
+    let words = this.state.words
     let currentIndex = words.indexOf(this.state.currentWord)
 
-    if (currentIndex === 1 && this.state.page === 'spelling'){
+    if (currentIndex === 4 && this.state.page === 'spelling'){
       window.location.replace(`http://localhost:3001/home`)
-    } else if (currentIndex <= 1 && this.state.page !== 'spelling') {
+    } else if (currentIndex <= 4 && this.state.page !== 'spelling') {
         this.setState({page: nextPage})
     } else {
       this.setState({page: nextPage, currentWord: words[currentIndex + 1]})

@@ -2,7 +2,7 @@ import React from 'react'
 import '../word.css';
 import {Segment, Container} from 'semantic-ui-react'
 
-const WordPage = (props) => {
+const TranslationPage = (props) => {
   return (
 
     <div class ="ui stacked secondary segment">
@@ -58,4 +58,4 @@ const WordPage = (props) => {
   )
 }
 
-export default WordPage
+export default TranslationPage
