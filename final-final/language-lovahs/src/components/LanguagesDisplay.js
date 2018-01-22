@@ -4,7 +4,7 @@ import { Container, Divider, Grid, Header, Image } from 'semantic-ui-css/semanti
 
 
 export default class LanguagesDisplay extends React.Component {
-
+  
   render(){
     return(
       <div class="ui grid">

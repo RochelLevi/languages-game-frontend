@@ -4,7 +4,9 @@ import {Segment, Container} from 'semantic-ui-react'
 
 const WordPage = (props) => {
   return (
+
     <div class ="ui stacked secondary segment">
+      <h1>{props.currentWord.name}</h1>
 
 
       <div class="ui form">
@@ -49,27 +51,6 @@ const WordPage = (props) => {
 
         </div>
       </div>
-
-
-      {// <div class="boxes">
-      //
-      //
-      //   <div class="ui huge checkbox">
-      //     <input type="radio" id="box-1"/>
-      //     <label for="box-1">Sustainable typewriter cronut</label>
-      //   </div>
-      //
-      //   <div class="ui huge checkbox">
-      //     <input type="radio" id="box-2"/>
-      //     <label for="box-2">Gentrify pickled kale chips </label>
-      //   </div>
-      //
-      //   <div class="ui huge checkbox">
-      //     <input type="radio" id="box-3"/>
-      //     <label for="box-3">Gastropub butcher</label>
-      //   </div>
-      // </div>
-    }
 
       <button onClick={() => props.pageChange('spelling')} >Next</button>
 
