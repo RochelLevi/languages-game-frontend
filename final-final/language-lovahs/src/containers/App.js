@@ -7,7 +7,7 @@ import Profile from '../components/Profile'
 import Navbar from '../components/Navbar'
 import MainContainer from './MainContainer'
 import Game from '../containers/Game'
-import {fetchUsers, fetchUser} from '../adapters/index'
+import {fetchUsers, fetchUser, fetchLanguages} from '../adapters/index'
 
 class App extends Component {
   constructor(props){
@@ -15,12 +15,14 @@ class App extends Component {
 
     this.state = {
       users: [],
+      languages: [],
       currentUser: ''
     }
   }
 
   componentDidMount = () => {
     fetchUsers().then(json => this.setState({users: json}))
+    fetchLanguages().then(json => this.setState({languages: json}))
   }
 
   getUserStats = (userName) => {

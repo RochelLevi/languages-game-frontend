@@ -9,12 +9,24 @@ export default class Game extends React.Component {
   constructor(props){
     super(props)
 
+
     this.state = {
       page: 'welcome',
       currentWord: '',
       learnedWords: [],
-      wordPoints: 0
+      wordPoints: 0,
     }
+  }
+
+
+  getLanguage(){
+    const arr = this.props.history.location.pathname.split('/')
+    return arr[arr.length - 1]
+  }
+
+  componentDidMount(){
+    const languageId = parseInt(this.getLanguage())
+    this.getWords(languageId)
   }
 
   handlePageChange = (nextPage) =>{

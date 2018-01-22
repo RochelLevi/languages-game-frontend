@@ -3,6 +3,11 @@ export const fetchUsers = () =>{
   .then(resp => resp.json())
 }
 
+export const fetchLanguages = () =>{
+  return fetch('http://localhost:3000/api/languages')
+  .then(resp => resp.json())
+}
+
 
 export const fetchUser = (id) => {
   return fetch(`http://localhost:3000/api/users/${id}`)
