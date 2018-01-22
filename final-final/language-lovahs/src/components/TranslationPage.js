@@ -2,12 +2,12 @@ import React from 'react'
 import '../word.css';
 import {Segment, Container} from 'semantic-ui-react'
 
-const WordPage = (props) => {
+const TranslationPage = (props) => {
   return (
 
     <div class="ui middle aligned center aligned grid">
       <div class="column">
-    <h1>{props.currentWord.name}</h1>
+    <h1>{props.currentWord.english_translation}</h1>
 
 
 
@@ -55,7 +55,7 @@ const WordPage = (props) => {
         </div>
       </div>
       </div>
-      <button onClick={() => props.pageChange('translation')} >Next</button>
+      <button onClick={() => props.pageChange('spelling')} >Next</button>
     </div>
 
 
@@ -65,4 +65,4 @@ const WordPage = (props) => {
   )
 }
 
-export default WordPage
+export default TranslationPage
