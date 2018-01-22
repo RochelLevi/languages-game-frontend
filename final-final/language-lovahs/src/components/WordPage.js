@@ -1,45 +1,78 @@
 import React from 'react'
+import '../word.css';
+import {Segment, Container} from 'semantic-ui-react'
 
 const WordPage = (props) => {
   return (
-    <div>
+    <div class ="ui stacked secondary segment">
 
-    <div style={{border: "1px solid rgb(85, 184, 71)", width: "250px", height: "35px"}}><input id="multi-select-1" type="checkbox" name="1" value="1" class="answer selected" disabled=""/><span class="choice-index-span">False.</span><i id="check" className="green check circle icon" style={{display: "inline-block"}}></i></div>
 
       <div class="ui form">
         <div class="grouped fields">
           <label>How often do you use checkboxes?</label>
 
-          <div class="field" style={{'background-color': 'rgb(230, 243, 244)', width: "250px", height: "35px"}}>
-            <div class="ui checkbox" style={{"vertical-align": "middle"}}>
-              <input type="radio" name="example2"/>
-              <label>Once a week</label>
+          <Segment style={{'background-color': 'rgb(230, 243, 244)', width: "20%", height: "5%"}}>
+            <div class="field" >
+              <div class="ui huge checkbox" >
+                <input type="radio" name="example2"/>
+                <label>Once a week</label>
+              </div>
             </div>
-          </div>
+          </Segment>
 
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="radio" name="example2"/>
-              <label>2-3 times a week</label>
+          <Segment style={{'background-color': 'rgb(230, 243, 244)', width: "20%", height: "5%"}}>
+            <div class="field">
+              <div class="ui huge checkbox">
+                <input type="radio" name="example2"/>
+                <label>2-3 times a week</label>
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="radio" name="example2"/>
-              <label>Once a day</label>
+          </Segment>
+
+          <Segment style={{'background-color': 'rgb(230, 243, 244)', width: "20%", height: "5%"}}>
+            <div class="field">
+              <div class="ui huge checkbox">
+                <input type="radio" name="example2"/>
+                <label>Once a day</label>
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="radio" name="example2"/>
-              <label>Twice a day</label>
+          </Segment>
+
+          <Segment style={{'background-color': 'rgb(230, 243, 244)', width: "20%", height: "5%"}}>
+            <div class="field">
+              <div class="ui huge checkbox">
+                <input type="radio" name="example2"/>
+                <label>Twice a day</label>
+              </div>
             </div>
-          </div>
+          </Segment>
+
         </div>
       </div>
 
 
+      {// <div class="boxes">
+      //
+      //
+      //   <div class="ui huge checkbox">
+      //     <input type="radio" id="box-1"/>
+      //     <label for="box-1">Sustainable typewriter cronut</label>
+      //   </div>
+      //
+      //   <div class="ui huge checkbox">
+      //     <input type="radio" id="box-2"/>
+      //     <label for="box-2">Gentrify pickled kale chips </label>
+      //   </div>
+      //
+      //   <div class="ui huge checkbox">
+      //     <input type="radio" id="box-3"/>
+      //     <label for="box-3">Gastropub butcher</label>
+      //   </div>
+      // </div>
+    }
+
       <button onClick={() => props.pageChange('spelling')} >Next</button>
+
     </div>
   )
 }

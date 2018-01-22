@@ -24,9 +24,10 @@ export default class Game extends React.Component {
     return arr[arr.length - 1]
   }
 
+
   componentDidMount(){
     const languageId = parseInt(this.getLanguage())
-    this.getWords(languageId)
+    // this.getWords(languageId)
   }
 
   handlePageChange = (nextPage) =>{
