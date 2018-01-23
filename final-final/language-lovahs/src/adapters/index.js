@@ -37,3 +37,27 @@ export const createUser = (userDetails) =>{
     body: JSON.stringify(userDetails)
   })
 }
+
+export const createLearnedWords = (userId, wordId) =>{
+  return fetch('http://localhost:3000/api/learned_words',
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify({user_id: userId, word_id: wordId })
+  })
+}
+
+export const updatePoints = (newTotal, id) =>{
+  return fetch(`http://localhost:3000/api/points/${id}`,
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "PATCH",
+    body: JSON.stringify({total: newTotal})
+  })
+}
