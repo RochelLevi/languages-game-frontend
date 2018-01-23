@@ -44,7 +44,7 @@ class Game extends React.Component {
     let lang = this.getLanguageId()
     fetchLanguages().then(json => this.setState({languages: json}))
     getLangWords(lang, 1)
-    .then(json => this.setState({page: 'welcome', words: json.words, currentWord: json.words})
+    .then(json => this.setState({page: 'welcome', words: json.words}, this.setState({currentWord: json.words[0]}))
 )
 
   }
