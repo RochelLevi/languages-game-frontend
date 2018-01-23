@@ -35,7 +35,7 @@ class App extends Component {
 
   currentUserInfo = () => {
     fetchUser(this.state.currentUserId)
-    .then(json => this.setState({currentUserInfo: json}))
+    .then(json => this.setState({currentUserInfo: json.users}, console.log("raw", json)))
   }
 
 
