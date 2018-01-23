@@ -38,13 +38,13 @@ class Game extends React.Component {
 
   componentWillMount(){
     this.setState({page: 'welcome'})
-  }
-
-  componentDidMount(){
-    let lang = this.getLanguageId()
+  // }
+  //
+  // componentDidMount(){
+    const lang = this.getLanguageId()
     fetchLanguages().then(json => this.setState({languages: json}))
     getLangWords(lang, 1)
-    .then(json => this.setState({page: 'welcome', words: json.words, currentWord: json.words})
+    .then(json => this.setState({page: 'welcome', words: json.words}, this.setState({currentWord: json.words[0]}))
 )
 
   }
@@ -82,14 +82,12 @@ class Game extends React.Component {
       else{
         this.setState({currWordPoints: 0, page: nextPage, currentWord: words[currentIndex + 1]})
       }
-      // this.setState({page: nextPage, currentWord: words[currentIndex + 1]})
     }
   }
 
   render(){
-    console.log(this.state.words);
-    const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
+    // const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
     switch (this.state.page) {
       case 'welcome':

@@ -27,7 +27,7 @@ export default class WordPage extends React.Component {
 
   handleChange = (e) => {
     const value = e.target.value
-    this.setState({checked: value}, console.log(this.state))
+    this.setState({checked: value})
 
   }
 
