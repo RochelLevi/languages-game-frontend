@@ -24,8 +24,9 @@ class Register extends React.Component {
   }
 
   handleSubmit = (event) => {
+    event.preventDefault()
     createUser({'username': this.state.username, 'password': this.state.password})
-    this.props.handleLogin(event, {username: this.state.username, password: this.state.password})
+    window.location.replace(`http://localhost:3001/login`)
   }
 
   checkValid(){

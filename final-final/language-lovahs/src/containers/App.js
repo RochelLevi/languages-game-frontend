@@ -41,15 +41,17 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.languages)
 
     return (
         <div>
           <Navbar />
           <Route exact path="/" component={Login}/>
-          <Route path="/login" component={() => {<Login users={this.state.users} handleLogin={this.handleLogin}/> } }/>
-          <Route path="/home" component={() => { <MainContainer languages={this.state.languages.languages} currentUser={this.state.currentUserInfo}/>}}/>
-          <Route path="/register" component={Register}/>
-          <Route exact path="/languages/:id" component={() => <Game/>}/>
+          <Route path="/login" component={() => <Login handleLogin={this.handleLogin}/> }/>
+          <Route path="/home" component={() => <MainContainer currentUser={this.state.currentUserInfo}/>}/>
+          <Route path="/register" component={() => <Register handleLogin={this.handleLogin}/> }/>
+          <Route exact path="/languages/:id" component={() => <Game languages={this.state.laguages} history={this.props.history}/>}/>
+
         </div>
       )
     }
