@@ -30,7 +30,7 @@ class Game extends React.Component {
   }
 
   getLaguage(){
-    return this.state.languages.filer(l =>{
+    return this.state.languages.find(l =>{
       return l.id === this.getLanguageId()
     })
   }
