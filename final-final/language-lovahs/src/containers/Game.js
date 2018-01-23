@@ -20,14 +20,10 @@ export default class Game extends React.Component {
     }
   }
 
-  getWords = (laguageId, userId) => {
-  }
-
   getLanguage(){
     const arr = this.props.history.location.pathname.split('/')
     return arr[arr.length - 1]
   }
-
 
   componentWillMount(){
     this.setState({page: 'welcome'})
@@ -54,7 +50,7 @@ export default class Game extends React.Component {
   }
 
   render(){
-    console.log(this.state.words)
+
     switch (this.state.page) {
       case 'welcome':
         return <WelcomePage
@@ -67,10 +63,12 @@ export default class Game extends React.Component {
       case 'word':
         return <WordPage
           currentWord={this.state.currentWord}
+          words={this.state.words}
           pageChange={this.handlePageChange} />
       case 'translation':
         return <TranslationPage
           currentWord={this.state.currentWord}
+          words={this.state.words}
           pageChange={this.handlePageChange} />
       case 'spelling':
         return <SpellingPage
