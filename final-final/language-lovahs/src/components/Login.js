@@ -40,6 +40,7 @@ class Login extends React.Component {
   // };
 
   render(){
+    console.log(this.props)
     return(
     <div class="ui middle aligned center aligned grid">
       <div class="column">

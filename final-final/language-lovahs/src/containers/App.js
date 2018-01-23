@@ -46,7 +46,7 @@ class App extends Component {
     return (
         <div>
           <Navbar />
-          <Route exact path="/" component={Login}/>
+          <Route exact path="/" component={() => <Login handleLogin={this.handleLogin}/> }/>
           <Route path="/login" component={() => <Login handleLogin={this.handleLogin}/> }/>
           <Route path="/home" component={() => <MainContainer currentUser={this.state.currentUserInfo}/>}/>
           <Route path="/register" component={() => <Register handleLogin={this.handleLogin}/> }/>
