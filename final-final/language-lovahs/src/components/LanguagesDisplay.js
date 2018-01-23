@@ -7,7 +7,8 @@ export default class LanguagesDisplay extends React.Component {
 
 
   render(){
-    console.log(this.props.currentUser.languages)
+    console.log('languages', this.props.currentUser[0])
+    // console.log(Object.keys(this.props.currentUser.languages))
     return(
       <div class="ui center aligned grid">
        <div class="column">

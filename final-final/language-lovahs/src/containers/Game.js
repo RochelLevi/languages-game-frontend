@@ -40,7 +40,6 @@ export default class Game extends React.Component {
     let words = this.state.words
     let currentIndex = words.indexOf(this.state.currentWord)
 
-    console.log("curr index", currentIndex)
 
     if (currentIndex === 4 && this.state.page === 'spelling'){
       window.location.replace(`http://localhost:3001/home`)

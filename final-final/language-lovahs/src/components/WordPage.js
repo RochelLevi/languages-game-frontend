@@ -33,7 +33,6 @@ export default class WordPage extends React.Component {
 
 
   render(){
-    console.log(this.state)
 
     return (
 
