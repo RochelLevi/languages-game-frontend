@@ -2,7 +2,10 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 
 const SpellingPage = (props) => {
+  console.log(props.letters)
+
   return (
+
     <div>
       <h1>Spell Time!</h1>
       <h1>{props.currentWord.name}</h1>

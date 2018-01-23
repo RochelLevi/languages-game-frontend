@@ -97,6 +97,10 @@ export default class WordPage extends React.Component {
         <button class="ui fluid large blue submit button" onClick={() => this.props.pageChange('translation')}>Next</button>
       </div>
 
+
       </div>
     )}
+
+
+
 }
