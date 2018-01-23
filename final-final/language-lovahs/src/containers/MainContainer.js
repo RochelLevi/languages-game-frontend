@@ -13,7 +13,7 @@ export default class MainContainer extends React.Component{
   render(){
     return(
       <div>
-        <LanguagesDisplay />
+        <LanguagesDisplay languages={this.props.languages} currentUser={this.props.currentUser}/>
       </div>
     )
   }

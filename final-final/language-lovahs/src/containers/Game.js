@@ -54,6 +54,9 @@ export default class Game extends React.Component {
   }
 
   render(){
+    const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+
     console.log(this.state.words)
     switch (this.state.page) {
       case 'welcome':
@@ -74,6 +77,7 @@ export default class Game extends React.Component {
           pageChange={this.handlePageChange} />
       case 'spelling':
         return <SpellingPage
+          letters={englishLetters}
           currentWord={this.state.currentWord}
           pageChange={this.handlePageChange} />
     }

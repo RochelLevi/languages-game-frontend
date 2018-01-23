@@ -16,13 +16,26 @@ class App extends Component {
     this.state = {
       users: [],
       languages: [],
-      currentUser: 1
+      currentUserId: 1,
+      currentUserInfo: []
     }
   }
 
+  handleLogin = (event, fields) => {
+    event.preventDefault()
+    let user = this.state.users.filter(u => {return u.username === fields.username})[0]
+    this.setState({currentUser: user.id}, () => {})
+  }
+
   componentDidMount = () => {
-    fetchUsers().then(json => this.setState({users: json}))
+    fetchUsers().then(json => this.setState({users: json.users}))
     fetchLanguages().then(json => this.setState({languages: json}))
+    this.currentUserInfo()
+  }
+
+  currentUserInfo = () => {
+    fetchUser(this.state.currentUserId)
+    .then(json => this.setState({currentUserInfo: json}))
   }
 
 
@@ -32,13 +45,13 @@ class App extends Component {
         <div>
           <Navbar />
           <Route exact path="/" component={Login}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/home" component={() => <MainContainer getUserStats={fetchUser}/>}/>
+          <Route path="/login" component={() => <Login handleLogin={this.handleLogin}/>}/>
+          <Route path="/home" component={() => <MainContainer languages={this.state.languages.languages} currentUser={this.state.currentUserInfo}/>}/>
           <Route path="/register" component={Register}/>
           <Route exact path="/languages/:id" component={() => <Game/>}/>
         </div>
-    );
+      )
+    }
   }
-}
 
 export default App;

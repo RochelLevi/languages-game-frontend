@@ -13,6 +13,14 @@ class Login extends React.Component {
     };
   }
 
+  handleChange = (e) => {
+    if (e.target.name === 'email'){
+      this.setState({fields: {...this.state.fields, username: e.target.value}})
+    } else {
+      this.setState({fields: {...this.state.fields, password: e.target.value}})
+    }
+  }
+
   // handleChange = e => {
   //   const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
   //   this.setState({ fields: newFields });
@@ -42,21 +50,21 @@ class Login extends React.Component {
           </div>
         </h2>
 
-        <form class="ui large form">
+        <form onSubmit={(event) => this.props.handleLogin(event, this.state.fields)} class="ui large form">
           <div class="ui stacked secondary segment">
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="email" placeholder="Username"/>
+                <input onChange={this.handleChange} type="text" name="email" placeholder="Username"/>
               </div>
             </div>
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
-                <input type="password" name="password" placeholder="Password"/>
+                <input onChange={this.handleChange} type="password" name="password" placeholder="Password"/>
               </div>
             </div>
-            <div class="ui fluid large blue submit button">Login</div>
+            <button class="ui fluid large blue submit button">Login</button>
           </div>
 
           <div class="ui error message"></div>
