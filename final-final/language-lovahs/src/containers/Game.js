@@ -5,8 +5,11 @@ import SpellingPage from '../components/SpellingPage'
 import WelcomePage from '../components/WelcomePage'
 import TranslationPage from '../components/TranslationPage'
 import {getLangWords} from '../adapters/index.js'
+import {withRouter} from 'react-router-dom'
+import {fetchLanguages} from '../adapters/index'
 
-export default class Game extends React.Component {
+
+class Game extends React.Component {
   constructor(props){
     super(props)
 
@@ -14,6 +17,7 @@ export default class Game extends React.Component {
     this.state = {
       page: '',
       currentWord: {},
+      languages: [],
       words: [],
       learnedWords: [],
       gamePoints: 0,
@@ -21,9 +25,15 @@ export default class Game extends React.Component {
     }
   }
 
-  getLanguage(){
+  getLanguageId(){
     const arr = this.props.history.location.pathname.split('/')
     return arr[arr.length - 1]
+  }
+
+  getLaguage(){
+    return this.state.languages.filer(l =>{
+      return l.id === this.getLanguageId()
+    })
   }
 
   componentWillMount(){
@@ -31,7 +41,9 @@ export default class Game extends React.Component {
   }
 
   componentDidMount(){
-    getLangWords(1, 1)
+    let lang = this.getLanguageId()
+    fetchLanguages().then(json => this.setState({languages: json}))
+    getLangWords(lang, 1)
     .then(json => this.setState({page: 'welcome', words: json.words, currentWord: json.words[0]}))
 
   }
@@ -77,8 +89,6 @@ export default class Game extends React.Component {
     const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 
-    console.log(this.state)
-
     switch (this.state.page) {
       case 'welcome':
         return <WelcomePage
@@ -100,10 +110,11 @@ export default class Game extends React.Component {
           pageChange={this.handlePageChange} />
       case 'spelling':
         return <SpellingPage
-          letters={englishLetters}
           currentWord={this.state.currentWord}
           pageChange={this.handlePageChange} />
     }
 
-    }
+  }
 }
+
+export default withRouter(Game)

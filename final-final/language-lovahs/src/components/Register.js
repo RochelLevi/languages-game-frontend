@@ -23,8 +23,10 @@ class Register extends React.Component {
     }
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault()
     createUser({'username': this.state.username, 'password': this.state.password})
+    window.location.replace(`http://localhost:3001/login`)
   }
 
   checkValid(){

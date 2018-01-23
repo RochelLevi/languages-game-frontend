@@ -75,7 +75,8 @@ class Login extends React.Component {
           New to us? <a href="/register">Register</a>
         </div>
       </div>
-    </div>)
+    </div>
+    )
   }
 }
 
