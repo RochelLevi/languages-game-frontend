@@ -2,27 +2,44 @@ import React from 'react'
 import '../word.css';
 import {Segment, Container} from 'semantic-ui-react'
 
-const TranslationPage = (props) => {
+export default class TranslationPage extends React.Component {
 
-    const shuffledWords = props.words
-
-    function shuffleArray(array) {
-      for (var i = array.length - 1; i > 0; i--) {
-          var j = Math.floor(Math.random() * (i + 1));
-          var temp = array[i];
-          array[i] = array[j];
-          array[j] = temp;
-      }
+  shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
+    return array
+  }
 
-    shuffleArray(shuffledWords)
+  constructor(props){
+    super(props)
 
+    const words = [...this.props.words]
+
+    this.state = {
+      checked: '',
+      shuffledWords: this.shuffleArray(words)
+    }
+  }
+
+  handleChange = (e) => {
+    const value = e.target.value
+    this.setState({checked: value}, console.log(this.state))
+
+  }
+
+
+  render(){
+    console.log(this.state)
 
     return (
 
       <div class="ui middle aligned center aligned grid">
         <div class="column">
-      <h1>{props.currentWord.english_translation}</h1>
+      <h1>{this.props.currentWord.name}</h1>
 
 
 
@@ -34,8 +51,8 @@ const TranslationPage = (props) => {
             <Segment style={{height: "5%"}}>
               <div class="field" >
                 <div class="ui huge checkbox" >
-                  <input type="radio" name="example2"/>
-                  <label>{shuffledWords[0].name}</label>
+                  <input type="radio" value={this.state.shuffledWords[0].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[0].id} onChange={this.handleChange}/>
+                  <label>{this.state.shuffledWords[0].english_translation}</label>
                 </div>
               </div>
             </Segment>
@@ -43,8 +60,8 @@ const TranslationPage = (props) => {
             <Segment style={{height: "5%"}}>
               <div class="field">
                 <div class="ui huge checkbox">
-                  <input type="radio" name="example2"/>
-                  <label>{shuffledWords[1].name}</label>
+                  <input type="radio" value={this.state.shuffledWords[1].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[1].id} onChange={this.handleChange}/>
+                  <label>{this.state.shuffledWords[1].english_translation}</label>
                 </div>
               </div>
             </Segment>
@@ -52,8 +69,8 @@ const TranslationPage = (props) => {
             <Segment style={{height: "5%"}}>
               <div class="field">
                 <div class="ui huge checkbox">
-                  <input type="radio" name="example2"/>
-                  <label>{shuffledWords[2].name}</label>
+                  <input type="radio" value={this.state.shuffledWords[2].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[2].id} onChange={this.handleChange}/>
+                  <label>{this.state.shuffledWords[2].english_translation}</label>
                 </div>
               </div>
             </Segment>
@@ -61,8 +78,8 @@ const TranslationPage = (props) => {
             <Segment style={{height: "5%"}}>
               <div class="field">
                 <div class="ui huge checkbox">
-                  <input type="radio" name="example2"/>
-                  <label>{shuffledWords[3].name}</label>
+                  <input type="radio" value={this.state.shuffledWords[3].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[3].id} onChange={this.handleChange}/>
+                  <label>{this.state.shuffledWords[3].english_translation}</label>
                 </div>
               </div>
             </Segment>
@@ -70,8 +87,8 @@ const TranslationPage = (props) => {
             <Segment style={{height: "5%"}}>
               <div class="field">
                 <div class="ui huge checkbox">
-                  <input type="radio" name="example2"/>
-                  <label>{shuffledWords[4].name}</label>
+                  <input type="radio" value={this.state.shuffledWords[4].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[4].id} onChange={this.handleChange}/>
+                  <label>{this.state.shuffledWords[4].english_translation}</label>
                 </div>
               </div>
             </Segment>
@@ -79,14 +96,13 @@ const TranslationPage = (props) => {
           </div>
         </div>
         </div><br/>
-        <button class="ui fluid large blue submit button" onClick={() => props.pageChange('spelling')}>Next</button>
+        <button class="ui fluid large blue submit button" onClick={() => this.props.pageChange('spelling')}>Next</button>
       </div>
 
 
-
-
       </div>
-  )
+    )}
+
+
+
 }
-
-export default TranslationPage

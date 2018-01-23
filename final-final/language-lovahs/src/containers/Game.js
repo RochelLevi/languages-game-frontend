@@ -40,6 +40,8 @@ export default class Game extends React.Component {
     let words = this.state.words
     let currentIndex = words.indexOf(this.state.currentWord)
 
+    console.log("curr index", currentIndex)
+
     if (currentIndex === 4 && this.state.page === 'spelling'){
       window.location.replace(`http://localhost:3001/home`)
     } else if (currentIndex <= 4 && this.state.page !== 'spelling') {
@@ -53,6 +55,8 @@ export default class Game extends React.Component {
     console.log(this.state.words.indexOf(this.state.currentWord));
     const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
+
+    console.log("page", this.state.page)
 
     switch (this.state.page) {
       case 'welcome':

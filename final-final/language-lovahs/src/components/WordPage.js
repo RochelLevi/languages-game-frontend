@@ -17,9 +17,11 @@ export default class WordPage extends React.Component {
   constructor(props){
     super(props)
 
+    const words = [...this.props.words]
+
     this.state = {
       checked: '',
-      shuffledWords: this.shuffleArray([...this.props.words])
+      shuffledWords: this.shuffleArray(words)
     }
   }
 
