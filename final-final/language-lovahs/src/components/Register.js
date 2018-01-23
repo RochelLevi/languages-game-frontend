@@ -23,8 +23,9 @@ class Register extends React.Component {
     }
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
     createUser({'username': this.state.username, 'password': this.state.password})
+    this.props.handleLogin(event, {username: this.state.username, password: this.state.password})
   }
 
   checkValid(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {Route} from 'react-router-dom'
+import {Route, withRouter} from 'react-router-dom'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import Profile from '../components/Profile'
@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       users: [],
       languages: [],
-      currentUserId: 1,
+      currentUserId: 0,
       currentUserInfo: []
     }
   }
@@ -24,7 +24,7 @@ class App extends Component {
   handleLogin = (event, fields) => {
     event.preventDefault()
     let user = this.state.users.filter(u => {return u.username === fields.username})[0]
-    this.setState({currentUser: user.id}, () => {})
+    this.setState({currentUserId: user.id}, () => this.props.history.push('/home'))
   }
 
   componentDidMount = () => {
@@ -41,12 +41,13 @@ class App extends Component {
 
 
   render() {
+
     return (
         <div>
           <Navbar />
           <Route exact path="/" component={Login}/>
-          <Route path="/login" component={() => <Login handleLogin={this.handleLogin}/>}/>
-          <Route path="/home" component={() => <MainContainer languages={this.state.languages.languages} currentUser={this.state.currentUserInfo}/>}/>
+          <Route path="/login" component={() => {<Login users={this.state.users} handleLogin={this.handleLogin}/> } }/>
+          <Route path="/home" component={() => { <MainContainer languages={this.state.languages.languages} currentUser={this.state.currentUserInfo}/>}}/>
           <Route path="/register" component={Register}/>
           <Route exact path="/languages/:id" component={() => <Game/>}/>
         </div>
@@ -54,4 +55,4 @@ class App extends Component {
     }
   }
 
-export default App;
+export default withRouter(App);
