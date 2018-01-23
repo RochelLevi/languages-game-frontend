@@ -12,7 +12,7 @@ const SpellingPage = (props) => {
       <button>í</button>
       <button>ó</button>
 
-      í
+      
       <button onClick={() => props.pageChange('def')} >Next</button>
     </div>
   )

@@ -61,3 +61,29 @@ export const updatePoints = (newTotal, id) =>{
     body: JSON.stringify({total: newTotal})
   })
 }
+
+export const login = (userFields) =>{
+  return fetch(`http://localhost:3000/api/auth`,
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(userFields)
+  }).then(res => res.json())
+}
+
+const token = localStorage.getItem('token')
+
+export const getCurrentUser = () =>{
+  return fetch(`http://localhost:3000/api/current_user`,
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': token
+    },
+    method: "GET"
+  }).then(res => res.json())
+}
