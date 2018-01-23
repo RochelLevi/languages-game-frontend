@@ -16,7 +16,8 @@ export default class Game extends React.Component {
       currentWord: {},
       words: [],
       learnedWords: [],
-      wordPoints: 0,
+      gamePoints: 0,
+      currWordPoints: 0
     }
   }
 
@@ -36,26 +37,47 @@ export default class Game extends React.Component {
   }
 
 
-  handlePageChange = (nextPage) => {
+  handlePageChange = (nextPage, response) => {
+
+    if (parseInt(response) === parseInt(this.state.currentWord.id)){
+      this.setState({currWordPoints: this.state.currWordPoints + 1}, this.changePage(nextPage))
+    }
+    else{
+      this.changePage(nextPage)
+    }
+
+  }
+
+  changePage(nextPage){
     let words = this.state.words
     let currentIndex = words.indexOf(this.state.currentWord)
 
-
     if (currentIndex === 4 && this.state.page === 'spelling'){
+      if (parseInt(this.state.currWordPoints) > 1){
+        this.setState({gamePoints: this.state.gamePoints + 1, learnedWords: this.state.learnedWords.concat(this.state.currentWord), currWordPoints: 0})
+      }
+      else{
+        this.setState({currWordPoints: 0})
+      }
       window.location.replace(`http://localhost:3001/home`)
     } else if (currentIndex <= 4 && this.state.page !== 'spelling') {
         this.setState({page: nextPage})
     } else {
-      this.setState({page: nextPage, currentWord: words[currentIndex + 1]})
+      if (parseInt(this.state.currWordPoints) > 1){
+        this.setState({gamePoints: this.state.gamePoints + 1, learnedWords: this.state.learnedWords.concat(this.state.currentWord), currWordPoints: 0, page: nextPage, currentWord: words[currentIndex + 1]})
+      }
+      else{
+        this.setState({currWordPoints: 0, page: nextPage, currentWord: words[currentIndex + 1]})
+      }
+      // this.setState({page: nextPage, currentWord: words[currentIndex + 1]})
     }
   }
 
   render(){
-    console.log(this.state.words.indexOf(this.state.currentWord));
     const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 
-    console.log("page", this.state.page)
+    console.log(this.state)
 
     switch (this.state.page) {
       case 'welcome':

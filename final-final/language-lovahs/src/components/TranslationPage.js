@@ -38,7 +38,7 @@ export default class TranslationPage extends React.Component {
 
       <div class="ui middle aligned center aligned grid">
         <div class="column">
-      <h1>{this.props.currentWord.name}</h1>
+      <h1>{this.props.currentWord.english_translation}</h1>
 
 
 
@@ -51,7 +51,7 @@ export default class TranslationPage extends React.Component {
               <div class="field" >
                 <div class="ui huge checkbox" >
                   <input type="radio" value={this.state.shuffledWords[0].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[0].id} onChange={this.handleChange}/>
-                  <label>{this.state.shuffledWords[0].english_translation}</label>
+                  <label>{this.state.shuffledWords[0].name}</label>
                 </div>
               </div>
             </Segment>
@@ -60,7 +60,7 @@ export default class TranslationPage extends React.Component {
               <div class="field">
                 <div class="ui huge checkbox">
                   <input type="radio" value={this.state.shuffledWords[1].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[1].id} onChange={this.handleChange}/>
-                  <label>{this.state.shuffledWords[1].english_translation}</label>
+                  <label>{this.state.shuffledWords[1].name}</label>
                 </div>
               </div>
             </Segment>
@@ -69,7 +69,7 @@ export default class TranslationPage extends React.Component {
               <div class="field">
                 <div class="ui huge checkbox">
                   <input type="radio" value={this.state.shuffledWords[2].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[2].id} onChange={this.handleChange}/>
-                  <label>{this.state.shuffledWords[2].english_translation}</label>
+                  <label>{this.state.shuffledWords[2].name}</label>
                 </div>
               </div>
             </Segment>
@@ -78,7 +78,7 @@ export default class TranslationPage extends React.Component {
               <div class="field">
                 <div class="ui huge checkbox">
                   <input type="radio" value={this.state.shuffledWords[3].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[3].id} onChange={this.handleChange}/>
-                  <label>{this.state.shuffledWords[3].english_translation}</label>
+                  <label>{this.state.shuffledWords[3].name}</label>
                 </div>
               </div>
             </Segment>
@@ -87,7 +87,7 @@ export default class TranslationPage extends React.Component {
               <div class="field">
                 <div class="ui huge checkbox">
                   <input type="radio" value={this.state.shuffledWords[4].id} checked={parseInt(this.state.checked) === this.state.shuffledWords[4].id} onChange={this.handleChange}/>
-                  <label>{this.state.shuffledWords[4].english_translation}</label>
+                  <label>{this.state.shuffledWords[4].name}</label>
                 </div>
               </div>
             </Segment>
@@ -95,7 +95,7 @@ export default class TranslationPage extends React.Component {
           </div>
         </div>
         </div><br/>
-        <button class="ui fluid large blue submit button" onClick={() => this.props.pageChange('spelling')}>Next</button>
+        <button class="ui fluid large blue submit button" onClick={() => this.props.pageChange('spelling', this.state.checked)}>Next</button>
       </div>
 
 
