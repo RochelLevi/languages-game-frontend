@@ -8,6 +8,13 @@ export default class MainContainer extends React.Component{
 
   }
 
+  componentDidMount(){
+    const token = localStorage.getItem('token')
+    if(!token){
+      this.props.history.push('/login')
+    }
+  }
+
 
 
   render(){
