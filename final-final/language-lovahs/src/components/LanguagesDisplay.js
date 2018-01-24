@@ -54,7 +54,6 @@ export default class LanguagesDisplay extends React.Component {
   // }
 
   render(){
-    console.log(this.props.languages)
     return(
       <div class="ui center aligned grid">
        <div class="column">
