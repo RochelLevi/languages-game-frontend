@@ -14,12 +14,13 @@ export default class MainContainer extends React.Component{
   }
 
   componentDidMount(){
-    const token = localStorage.getItem('token')
-    if(token){
-      fetchUser(this.props.currentUser.id).then(res => this.setState({languages: res}))
-    } else {
-      this.props.history.push('/login')
-    }
+    // const token = localStorage.getItem('token')
+    // if(token){
+    //   fetchUser(token)
+    //     .then(res => this.setState({languages: res}, console.log('res', res)))
+    // } else {
+    //   this.props.history.push('/login')
+    // }
   }
 
 
@@ -29,7 +30,7 @@ export default class MainContainer extends React.Component{
       <div>
         <LanguagesDisplay
           history={this.props.history}
-          userLanguages={this.state.languages.users}
+          userLanguages={this.props.userLanguages}
           currentUser={this.props.currentUser}
           allLanguages={this.props.allLanguages}/>
       </div>
