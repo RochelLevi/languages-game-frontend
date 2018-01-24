@@ -22,7 +22,6 @@ export default class LanguagesDisplay extends React.Component {
   }
 
 
-
   keepLearningDisplay = () => {
     let keepLearning = Array.from(this.props.userLanguages.users).filter(l => { return l.points !== 0 })
 

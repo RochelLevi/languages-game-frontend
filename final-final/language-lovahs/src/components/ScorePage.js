@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 
 const ScorePage = (props) => {
-
+  // console.log(props.currentLanguage)
   return (
 
     <div class="ui middle aligned center aligned grid">

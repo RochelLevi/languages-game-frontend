@@ -31,11 +31,13 @@ class Game extends React.Component {
     return arr[arr.length - 1]
   }
 
-  // getLaguage(){
-  //   return this.state.languages.find(l =>{
-  //     return l.id === this.getLanguageId()
-  //   })
-  // }
+  getUserCurrLang(){
+    const languageId = this.getLanguageId()
+    const languages = this.props.userLanguages.users
+    if (languages){
+      return languages[languageId - 1]
+    }
+  }
 
   componentWillMount(){
     this.setState({page: 'welcome'})
@@ -79,7 +81,8 @@ class Game extends React.Component {
         this.setState({currWordPoints: 0})
       }
       this.setState({page: 'score'})
-      updatePoints(this.state.total, this.props.currentUser.id)
+      // console.log(parseInt(this.state.total) + parseInt(this.getUserCurrLang().points))
+      updatePoints(this.state.gamePoints + this.getUserCurrLang().points, this.getUserCurrLang().points_id)
       this.state.learnedWords.forEach(word => {
         createLearnedWords(this.props.currentUser.id, word.id)
       })
@@ -97,13 +100,10 @@ class Game extends React.Component {
   }
 
   render(){
-
-    // const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-
+    console.log(this.getUserCurrLang())
     switch (this.state.page) {
       case 'welcome':
         return <WelcomePage
-          // currentWord={this.state.currentWord}
           pageChange={this.handlePageChange} />
       case 'def':
         return <DefPage
@@ -125,6 +125,7 @@ class Game extends React.Component {
           pageChange={this.handlePageChange} />
       case 'score':
         return <ScorePage
+          // currentLanguage={this.getUserCurrLang()}
           score={this.state.gamePoints}
           />
     }

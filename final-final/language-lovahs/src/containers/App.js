@@ -25,12 +25,13 @@ class App extends Component {
     const currentUser = {currentUser: user}
     localStorage.setItem('token', user.id)
     this.setState({auth: currentUser}, )
-
+    this.props.history.push('/home')
   }
 
   handleLogout = () => {
     this.setState({auth: {currentUser: {}}})
     localStorage.removeItem('token')
+    this.props.history.push('/')
   }
 
   componentDidMount = () => {
@@ -58,7 +59,7 @@ class App extends Component {
           <Route
            exact path="/"
            render={() => {
-             const loggedIn = !!this.state.auth.currentUser.id
+             const loggedIn = !!localStorage['token']
              return loggedIn ? <Redirect to='/home'/> : <Redirect to='/login'/>
            }}
 

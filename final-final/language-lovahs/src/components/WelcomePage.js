@@ -13,9 +13,10 @@ const WelcomePage = (props) => {
           </div>
         </h2>
           <div class="ui image header">
-        <button onClick={() => props.pageChange('def')} >Next</button>
-        </div>
+
       </div>
+      </div>
+      <button class="ui fluid large black submit button" onClick={() => props.pageChange('def')} >Next</button>
     </div>
   </div>
 
