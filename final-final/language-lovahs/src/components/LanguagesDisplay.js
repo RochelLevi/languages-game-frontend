@@ -78,12 +78,13 @@ export default class LanguagesDisplay extends React.Component {
 
             <div class="ui grid">
             <div class="two column row">
+
               <div class="column">
                 <div class="ui header">
                   KEEP LEARNING
+                  </div>
                   <div class="ui raised card">
                     {this.keepLearningDisplay()}
-                  </div>
                 </div>
               </div>
 

@@ -53,7 +53,6 @@ class App extends Component {
 
 
   render() {
-    console.log(!!localStorage['token'])
     return (
         <div>
           <Navbar currentUser={this.state.auth.currentUser} handleLogout={this.handleLogout}/>
@@ -72,7 +71,7 @@ class App extends Component {
             }
           }/>
           <Route path="/home" render={(routerProps) => {
-            const loggedIn = !!this.state.auth.currentUser.id
+            const loggedIn = !!localStorage['token']
             return loggedIn ?
             <MainContainer {...routerProps} currentUser={this.state.auth.currentUser} allLanguages={this.state.languages} userLanguages={this.state.userLanguages}/> :
             <Redirect to='/login'/> }}
