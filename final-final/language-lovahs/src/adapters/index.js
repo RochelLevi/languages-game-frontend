@@ -1,7 +1,7 @@
-export const fetchUsers = () =>{
-  return fetch('http://localhost:3000/api/users')
-  .then(resp => resp.json())
-}
+// export const fetchUsers = () =>{
+//   return fetch('http://localhost:3000/api/users')
+//   .then(resp => resp.json())
+// }
 
 export const fetchLanguages = () =>{
   return fetch('http://localhost:3000/api/languages')
@@ -14,11 +14,11 @@ export const fetchLanguages = () =>{
 //   })
 // }
 
-export const fetchUser = (id) => {
-  let url = `http://localhost:3000/api/users/${id}`
-  return fetch(url)
-        .then(resp => resp.json())
-}
+// export const fetchUser = (id) => {
+//   let url = `http://localhost:3000/api/users/${id}`
+//   return fetch(url)
+//         .then(resp => resp.json())
+// }
 
 export const getLangWords = (languageId, userId) => {
   let url = `http://localhost:3000/api/words?language_id=${languageId}&user_id=${userId}`
@@ -57,7 +57,7 @@ export const updatePoints = (newTotal, id) =>{
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    method: "PATCH",
+    method: "PUT",
     body: JSON.stringify({total: newTotal})
   })
 }

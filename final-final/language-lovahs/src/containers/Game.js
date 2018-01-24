@@ -4,7 +4,8 @@ import DefPage from '../components/DefPage'
 import SpellingPage from '../components/SpellingPage'
 import WelcomePage from '../components/WelcomePage'
 import TranslationPage from '../components/TranslationPage'
-import {getLangWords} from '../adapters/index.js'
+import ScorePage from '../components/ScorePage'
+import {getLangWords, updatePoints, createLearnedWords} from '../adapters/index.js'
 import {withRouter} from 'react-router-dom'
 import {fetchLanguages} from '../adapters/index'
 
@@ -38,14 +39,17 @@ class Game extends React.Component {
 
   componentWillMount(){
     this.setState({page: 'welcome'})
-  // }
-  //
-  // componentDidMount(){
+  }
+
+  componentDidMount(){
     const lang = this.getLanguageId()
     fetchLanguages().then(json => this.setState({languages: json}))
     getLangWords(lang, 1)
-    .then(json => this.setState({page: 'welcome', words: json.words}, this.setState({currentWord: json.words[0]}))
-)
+    .then(json => {
+      console.log(this)
+      this.setState({page: 'welcome', words: json.words},
+        () => this.setState({currentWord: this.state.words[0]}))}
+      )
 
   }
 
@@ -72,7 +76,12 @@ class Game extends React.Component {
       else{
         this.setState({currWordPoints: 0})
       }
-      window.location.replace(`http://localhost:3001/home`)
+      this.setState({page: 'score'})
+      updatePoints(this.state.total, this.props.currentUser.id)
+      this.state.learnedWords.forEach(word => {
+        createLearnedWords(this.props.currentUser.id, word.id)
+      })
+
     } else if (currentIndex <= 4 && this.state.page !== 'spelling') {
         this.setState({page: nextPage})
     } else {
@@ -86,13 +95,13 @@ class Game extends React.Component {
   }
 
   render(){
-
+    console.log(this.state)
     // const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
     switch (this.state.page) {
       case 'welcome':
         return <WelcomePage
-          currentWord={this.state.currentWord}
+          // currentWord={this.state.currentWord}
           pageChange={this.handlePageChange} />
       case 'def':
         return <DefPage
@@ -112,6 +121,10 @@ class Game extends React.Component {
         return <SpellingPage
           currentWord={this.state.currentWord}
           pageChange={this.handlePageChange} />
+      case 'score':
+        return <ScorePage
+          score={this.state.gamePoints}
+          />
     }
 
   }

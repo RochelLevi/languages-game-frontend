@@ -7,7 +7,7 @@ import Profile from '../components/Profile'
 import Navbar from '../components/Navbar'
 import MainContainer from './MainContainer'
 import Game from '../containers/Game'
-import {fetchUsers, fetchUser, fetchLanguages, getCurrentUser} from '../adapters/index'
+import {fetchLanguages, getCurrentUser} from '../adapters/index'
 
 class App extends Component {
   constructor(props){
@@ -45,13 +45,13 @@ class App extends Component {
     }
 
     fetchLanguages().then(json => this.setState({languages: json}))
-    this.currentUserInfo()
+    // this.currentUserInfo()
   }
 
-  currentUserInfo = () => {
-    fetchUser(this.state.currentUserId)
-    .then(json => this.setState({currentUserInfo: json.users}))
-  }
+  // currentUserInfo = () => {
+  //   fetchUser(this.state.currentUserId)
+  //   .then(json => this.setState({currentUserInfo: json.users}))
+  // }
 
 
 
@@ -71,7 +71,7 @@ class App extends Component {
           <Route path="/login" component={(routerProps) => <Login {...routerProps} handleLogin={this.handleLogin}/> }/>
           <Route path="/home" component={(routerProps) => <MainContainer {...routerProps} currentUser={this.state.currentUserInfo}/>}/>
           <Route path="/register" component={() => <Register handleLogin={this.handleLogin}/> }/>
-          <Route exact path="/languages/:id" component={() => <Game languages={this.state.laguages} history={this.props.history}/>}/>
+          <Route exact path="/languages/:id" component={() => <Game languages={this.state.laguages} history={this.props.history} currentUser={this.state.auth.currentUser}/>}/>
 
         </div>
       )
