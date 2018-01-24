@@ -31,25 +31,31 @@ class Game extends React.Component {
     return arr[arr.length - 1]
   }
 
-  getLaguage(){
-    return this.state.languages.find(l =>{
-      return l.id === this.getLanguageId()
-    })
-  }
+  // getLaguage(){
+  //   return this.state.languages.find(l =>{
+  //     return l.id === this.getLanguageId()
+  //   })
+  // }
 
   componentWillMount(){
     this.setState({page: 'welcome'})
+
   }
 
   componentDidMount(){
     const lang = this.getLanguageId()
     fetchLanguages().then(json => this.setState({languages: json}))
-    getLangWords(lang, 1)
+    getLangWords(lang, this.props.currentUser.id)
     .then(json => {
-      console.log(this)
       this.setState({page: 'welcome', words: json.words},
         () => this.setState({currentWord: this.state.words[0]}))}
       )
+// =======
+//     const lang = this.getLanguageId()
+//     fetchLanguages().then(json => this.setState({languages: json}))
+//     getLangWords(lang, 1)
+//     .then(json => this.setState({page: 'welcome', words: json.words}), () => this.setState({currentWord: this.words[0]}))
+// >>>>>>> c2398e8c541df6a961844fff5e2f50bfef0edbcd
 
   }
 
@@ -95,7 +101,7 @@ class Game extends React.Component {
   }
 
   render(){
-    console.log(this.state)
+
     // const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
     switch (this.state.page) {
