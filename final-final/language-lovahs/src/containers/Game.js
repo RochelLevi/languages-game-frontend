@@ -50,13 +50,6 @@ class Game extends React.Component {
       this.setState({page: 'welcome', words: json.words},
         () => this.setState({currentWord: this.state.words[0]}))}
       )
-// =======
-//     const lang = this.getLanguageId()
-//     fetchLanguages().then(json => this.setState({languages: json}))
-//     getLangWords(lang, 1)
-//     .then(json => this.setState({page: 'welcome', words: json.words}), () => this.setState({currentWord: this.words[0]}))
-// >>>>>>> c2398e8c541df6a961844fff5e2f50bfef0edbcd
-
   }
 
 

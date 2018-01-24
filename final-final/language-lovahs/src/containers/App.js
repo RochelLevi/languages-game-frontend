@@ -6,7 +6,7 @@ import Register from '../components/Register'
 import Navbar from '../components/Navbar'
 import MainContainer from './MainContainer'
 import Game from '../containers/Game'
-import {fetchLanguages, getCurrentUser} from '../adapters/index'
+import {fetchLanguages, getCurrentUser, fetchUser} from '../adapters/index'
 
 class App extends Component {
   constructor(props){
@@ -16,6 +16,7 @@ class App extends Component {
       auth: {currentUser: {}},
       users: [],
       languages: [],
+      userLanguages: [],
       currentUserInfo: []
     }
   }
@@ -23,9 +24,8 @@ class App extends Component {
   handleLogin = ( user) => {
     const currentUser = {currentUser: user}
     localStorage.setItem('token', user.id)
-    this.setState({auth: currentUser})
-    // let user = this.state.users.filter(u => {return u.username === fields.username})[0]
-    // this.setState({currentUserId: user.id}, () => this.props.history.push('/home'))
+    this.setState({auth: currentUser}, )
+
   }
 
   handleLogout = () => {
@@ -34,17 +34,16 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // fetchUsers().then(json => this.setState({users: json.users}))
     const token = localStorage.getItem('token')
 
     if(token){
       getCurrentUser()
         .then(res => this.setState({auth: {currentUser: res}}))
+      fetchUser(token)
+        .then(res => this.setState({userLanguages: res}))
     }
 
     fetchLanguages().then(json => this.setState({languages: json}))
-
-    // this.currentUserInfo()
   }
 
   // currentUserInfo = () => {
@@ -72,9 +71,9 @@ class App extends Component {
 
           />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} handleLogin={this.handleLogin}/> }/>
-          <Route path="/home" component={(routerProps) => <MainContainer {...routerProps} currentUser={this.state.auth.currentUser} allLanguages={this.state.languages}/>}/>
+          <Route path="/home" component={(routerProps) => <MainContainer {...routerProps} currentUser={this.state.auth.currentUser} allLanguages={this.state.languages} userLanguages={this.state.userLanguages}/>}/>
           <Route path="/register" component={Register}/>
-          <Route exact path="/languages/:id" component={() => <Game languages={this.state.laguages} history={this.props.history} currentUser={this.state.auth.currentUser}/>}/>
+          <Route exact path="/languages/:id" component={() => <Game languages={this.state.laguages} history={this.props.history} currentUser={this.state.auth.currentUser} userLanguages={this.state.userLanguages}/>}/>
 
         </div>
       )

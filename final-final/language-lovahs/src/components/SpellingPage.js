@@ -9,7 +9,7 @@ const SpellingPage = (props) => {
         <div class="ui stacked secondary segment">
         <h2 class="ui image header">
           <div as="h4" class="content">
-              Spell "{props.currentWord.english_translation}" bellow
+              Spell '{props.currentWord.english_translation}' bellow
           </div>
         </h2>
           <div class="content">
