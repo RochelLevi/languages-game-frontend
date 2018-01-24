@@ -3,7 +3,6 @@ import '../App.css';
 import {Route, withRouter, Redirect} from 'react-router-dom'
 import Login from '../components/Login'
 import Register from '../components/Register'
-import Profile from '../components/Profile'
 import Navbar from '../components/Navbar'
 import MainContainer from './MainContainer'
 import Game from '../containers/Game'
@@ -17,7 +16,6 @@ class App extends Component {
       auth: {currentUser: {}},
       users: [],
       languages: [],
-      currentUserId: 0,
       currentUserInfo: []
     }
   }
@@ -45,13 +43,8 @@ class App extends Component {
     }
 
     fetchLanguages().then(json => this.setState({languages: json}))
-    this.currentUserInfo()
   }
 
-  currentUserInfo = () => {
-    fetchUser(this.state.currentUserId)
-    .then(json => this.setState({currentUserInfo: json.users}))
-  }
 
 
 
@@ -69,7 +62,7 @@ class App extends Component {
 
           />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} handleLogin={this.handleLogin}/> }/>
-          <Route path="/home" component={(routerProps) => <MainContainer {...routerProps} currentUser={this.state.currentUserInfo}/>}/>
+          <Route path="/home" component={(routerProps) => <MainContainer {...routerProps} currentUser={this.state.auth.currentUser} allLanguages={this.state.languages}/>}/>
           <Route path="/register" component={() => <Register handleLogin={this.handleLogin}/> }/>
           <Route exact path="/languages/:id" component={() => <Game languages={this.state.laguages} history={this.props.history}/>}/>
 

@@ -2,10 +2,23 @@ import React from 'react'
 
 const WelcomePage = (props) => {
   return (
-      <div>
-        <h1>Wecome!</h1>
+    <div class="ui middle aligned center aligned grid">
+      <div class="column">
+        <div class="ui stacked secondary segment">
+        <h2 class="ui image header">
+          <div as="h4" class="content">
+              Let's get started!
+              Click bellow to begin the game
+              <i class="arrow down icon"></i>
+          </div>
+        </h2>
+          <div class="ui image header">
         <button onClick={() => props.pageChange('def')} >Next</button>
+        </div>
       </div>
+    </div>
+  </div>
+
     )
   }
 

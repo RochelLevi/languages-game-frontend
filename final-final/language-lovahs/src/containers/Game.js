@@ -38,14 +38,10 @@ class Game extends React.Component {
 
   componentWillMount(){
     this.setState({page: 'welcome'})
-  // }
-  //
-  // componentDidMount(){
     const lang = this.getLanguageId()
     fetchLanguages().then(json => this.setState({languages: json}))
     getLangWords(lang, 1)
-    .then(json => this.setState({page: 'welcome', words: json.words}, this.setState({currentWord: json.words[0]}))
-)
+    .then(json => this.setState({page: 'welcome', words: json.words}), () => this.setState({currentWord: this.words[0]}))
 
   }
 
@@ -86,6 +82,7 @@ class Game extends React.Component {
   }
 
   render(){
+    console.log('game', this.state.words)
 
     // const englishLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 

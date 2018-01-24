@@ -6,11 +6,11 @@
        Fonts
 --------------------*/
 
-@fontName          : 'Lato';
+@fontName          : @fontName, "Comic Sans MS", cursive, sans-serif;
 @fontSmoothing     : antialiased;
 
-@headerFont        : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-@pageFont          : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@headerFont        : @fontName, "Comic Sans MS", cursive, sans-serif;
+@pageFont          : @fontName, "Comic Sans MS", cursive, sans-serif;
 
 @googleFontName    : @fontName;
 @importGoogleFonts : true;

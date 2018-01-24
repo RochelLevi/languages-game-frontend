@@ -1,70 +1,134 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import { Container, Divider, Grid, Header, Image } from 'semantic-ui-css/semantic.min.css'
+import LanguageCard from './LanguageCard'
+import { Button, Card, Icon} from 'semantic-ui-react'
 
 
 export default class LanguagesDisplay extends React.Component {
 
+  getNewLanguages() {
+    let newbs = []
+    for (let l of this.props.alllanguages) {
+      for (let lang of this.props.userLanguages){
+        (l !== lang) && newbs.push(lang)
+      }
+    }
+    return newbs
+  }
+
+  handleClick = (id) =>{
+    this.props.history.push(`/languages/${id}`)
+  }
+
+  // componentDidMount(){
+  //   const newLangs = getNewLanguages().map(l => {
+  //     return (
+  //     <div class="ui raised card">
+  //       <div class="content">
+  //           <div class="header">
+  //             {l.name}
+  //           </div>
+  //         <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
+  //           Play Game!
+  //         </div>
+  //     </div>
+  //   </div>
+  //     )
+  //   })
+  // const oldLangs = this.props.allLanguages.map(l => {
+  //     return (
+  //     <div class="ui raised card">
+  //       <div class="content">
+  //           <div class="header">
+  //             {l.name}
+  //           </div>
+  //         <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
+  //           Play Game!
+  //         </div>
+  //     </div>
+  //   </div>
+  //     )
+  //   })
+  //
+  // }
 
   render(){
-
+    console.log(this.props.languages)
     return(
       <div class="ui center aligned grid">
        <div class="column">
 
-         <h2 class="ui image header">
+         <h2 class="ui header">
             <div class="content">
               Welcome!
             </div>
           </h2>
 
-          <div class="ui stacked secondary segment">
-          <div class="grouped fields">
           <div class="ui grid">
           <div class="two column row">
             <div class="column">
               <div class="ui header">
-                My Languages
+                KEEP LEARNING
               </div>
             </div>
 
             <div class="column">
               <div class="ui header">
-                  All Languages
+                  START LEARNING
               </div>
-
 
               <div class="ui cards">
-                <div class="card">
+                <div class="ui raised card">
                   <div class="content">
-                    <i class="greece flag"></i>
-                    <Link class="header" to="/languages/4">Greek</Link>
-                  </div>
+                      <div class="header">
+                        Greek
+                      </div>
+                    <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
+                      <i class="greece flag"></i>
+                      Play Game!
+                    </div>
                 </div>
-
-
-                <div class="card">
-                  <div class="content">
-                    <i class="france flag"></i>
-                    <Link class="header" to="/languages/1">French</Link>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="content">
-                    <i class="spain flag"></i>
-                    <Link class="header" to="/languages/2">Spanish</Link>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="content">
-                    <i class="israel flag"></i>
-                    <Link class="header" to="/languages/3">Hebrew</Link>
-                  </div>
-                </div>
-
               </div>
+
+              <div class="ui raised card">
+                <div class="content">
+                    <div class="header">
+                      French
+                    </div>
+                  <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
+                    <i class="france flag"></i>
+                    Play Game!
+                  </div>
+              </div>
+            </div>
+
+            <div class="ui raised card">
+              <div class="content">
+                  <div class="header">
+                    Spanish
+                  </div>
+                <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
+                  <i class="spain flag"></i>
+                  Play Game!
+                </div>
+            </div>
+          </div>
+
+          <div class="ui raised card">
+            <div class="content">
+                <div class="header">
+                  Hebrew
+                </div>
+              <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
+                <i class="israel flag"></i>
+                Play Game!
+              </div>
+          </div>
+        </div>
+
+
+
 
 
             </div>
@@ -74,7 +138,6 @@ export default class LanguagesDisplay extends React.Component {
       </div>
     </div>
 
-    </div>
 
 
 
