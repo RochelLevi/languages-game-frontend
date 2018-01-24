@@ -17,9 +17,10 @@ const DefPage = (props) => {
             </h1>
             </div>
             <div class="ui image header">
-          <button onClick={() => props.pageChange('word')} >Next</button>
+
           </div>
         </div>
+          <button class="ui fluid large black submit button" onClick={() => props.pageChange('word')} >Next</button>
       </div>
     </div>
     )

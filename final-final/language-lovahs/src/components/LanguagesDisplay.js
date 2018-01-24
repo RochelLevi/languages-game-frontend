@@ -21,37 +21,31 @@ export default class LanguagesDisplay extends React.Component {
     this.props.history.push(`/languages/${id}`)
   }
 
-  // componentDidMount(){
-  //   const newLangs = getNewLanguages().map(l => {
-  //     return (
-  //     <div class="ui raised card">
-  //       <div class="content">
-  //           <div class="header">
-  //             {l.name}
-  //           </div>
-  //         <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
-  //           Play Game!
-  //         </div>
-  //     </div>
-  //   </div>
-  //     )
-  //   })
-  // const oldLangs = this.props.allLanguages.map(l => {
-  //     return (
-  //     <div class="ui raised card">
-  //       <div class="content">
-  //           <div class="header">
-  //             {l.name}
-  //           </div>
-  //         <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
-  //           Play Game!
-  //         </div>
-  //     </div>
-  //   </div>
-  //     )
-  //   })
-  //
-  // }
+
+keepLearningDisplay = () => {
+    let keepLearning = Array.from(this.props.userLanguages.users).filter(l => { return l.points !== 0 })
+
+    let startLearning = Array.from(this.props.userLanguages.users).filter(l => { return l.points === 0 })
+
+    return keepLearning.map(l => {
+    return (
+      <div class='ui cards'>
+        <div class='ui raised card'>
+          <div class='content'>
+              <div class='header'>
+                {l.name}
+              </div>
+            <div class='ui bottom attached button' onClick={() => this.handleClick(4)}>
+              <i class='greece flag'></i>
+              Play Game!
+            </div>
+            </div>
+        </div>
+
+      </div>
+    )
+  })
+  }
 
   render(){
 

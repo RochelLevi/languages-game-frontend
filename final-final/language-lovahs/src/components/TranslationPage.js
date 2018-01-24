@@ -95,7 +95,7 @@ export default class TranslationPage extends React.Component {
           </div>
         </div>
         </div><br/>
-        <button class="ui fluid large blue submit button" onClick={() => this.props.pageChange('spelling', this.state.checked)}>Next</button>
+        <button class="ui fluid large black submit button" onClick={() => this.props.pageChange('spelling', this.state.checked)}>Next</button>
       </div>
 
 
