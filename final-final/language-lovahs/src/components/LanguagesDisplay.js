@@ -21,44 +21,53 @@ export default class LanguagesDisplay extends React.Component {
     this.props.history.push(`/languages/${id}`)
   }
 
-  // componentDidMount(){
-  //   const newLangs = getNewLanguages().map(l => {
-  //     return (
-  //     <div class="ui raised card">
-  //       <div class="content">
-  //           <div class="header">
-  //             {l.name}
-  //           </div>
-  //         <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
-  //           Play Game!
-  //         </div>
-  //     </div>
-  //   </div>
-  //     )
-  //   })
-  // const oldLangs = this.props.allLanguages.map(l => {
-  //     return (
-  //     <div class="ui raised card">
-  //       <div class="content">
-  //           <div class="header">
-  //             {l.name}
-  //           </div>
-  //         <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
-  //           Play Game!
-  //         </div>
-  //     </div>
-  //   </div>
-  //     )
-  //   })
-  //
-  // }
+
+
+  keepLearningDisplay = () => {
+    let keepLearning = Array.from(this.props.userLanguages.users).filter(l => { return l.points !== 0 })
+
+    return keepLearning.map(l => {
+        return (
+         <div class='ui cards'>
+           <div class='ui raised card'>
+             <div class='content'>
+                 <div class='header'>
+                   {l.name}
+                 </div>
+               <div class='ui bottom attached button' onClick={() => this.handleClick(4)}>
+                 Play Game!
+               </div>
+           </div>
+         </div>
+        </div>
+      )})
+  }
+
+  startLearningDisplay = () => {
+    let startLearning = Array.from(this.props.userLanguages.users).filter(l => { return l.points === 0 })
+
+    return startLearning.map(l => {
+        return (
+         <div class='ui cards'>
+           <div class='ui raised card'>
+             <div class='content'>
+                 <div class='header'>
+                   {l.name}
+                 </div>
+               <div class='ui bottom attached button' onClick={() => this.handleClick(l.id)}>
+                 Play Game!
+               </div>
+           </div>
+         </div>
+        </div>
+      )})
+  }
 
   render(){
 
-    if (this.props.userLanguages.users){
-      console.log(this.props.userLanguages.users[0])
-
-      return(
+    if (this.props.userLanguages.users ) {
+      console.log(this.keepLearningDisplay())
+      return (
         <div class="ui center aligned grid">
          <div class="column">
 
@@ -73,6 +82,9 @@ export default class LanguagesDisplay extends React.Component {
               <div class="column">
                 <div class="ui header">
                   KEEP LEARNING
+                  <div class="ui raised card">
+                    {this.keepLearningDisplay()}
+                  </div>
                 </div>
               </div>
 
@@ -80,75 +92,18 @@ export default class LanguagesDisplay extends React.Component {
                 <div class="ui header">
                     START LEARNING
                 </div>
-
-                <div class="ui cards">
                   <div class="ui raised card">
-                    <div class="content">
-                        <div class="header">
-                          Greek
-                        </div>
-                      <div class="ui bottom attached button" onClick={() => this.handleClick(4)}>
-                        <i class="greece flag"></i>
-                        Play Game!
-                      </div>
-                  </div>
-                </div>
-
-                <div class="ui raised card">
-                  <div class="content">
-                      <div class="header">
-                        French
-                      </div>
-                    <div class="ui bottom attached button" onClick={() => this.handleClick(1)}>
-                      <i class="france flag"></i>
-                      Play Game!
-                    </div>
-                </div>
-              </div>
-
-              <div class="ui raised card">
-                <div class="content">
-                    <div class="header">
-                      Spanish
-                    </div>
-                  <div class="ui bottom attached button" onClick={() => this.handleClick(2)}>
-                    <i class="spain flag"></i>
-                    Play Game!
+                    {this.startLearningDisplay()}
                   </div>
               </div>
-            </div>
 
-            <div class="ui raised card">
-              <div class="content">
-                  <div class="header">
-                    Hebrew
-                  </div>
-                <div class="ui bottom attached button" onClick={() => this.handleClick(3)}>
-                  <i class="israel flag"></i>
-                  Play Game!
-                </div>
             </div>
-          </div>
-
-              </div>
-            </div>
-          </div>
           </div>
         </div>
       </div>
 
-    )}
-    else{
+    )} else {
       return null
     }
   }
 }
-
-
-//<div class="ui special cards">
-//   <div class="card">
-//     <div class="content">
-//       <a class="header">Greek</a>
-//       </div>
-//     </div>
-// </div>

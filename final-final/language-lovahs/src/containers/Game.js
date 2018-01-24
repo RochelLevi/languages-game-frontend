@@ -48,9 +48,12 @@ class Game extends React.Component {
     getLangWords(lang, this.props.currentUser.id)
     .then(json => {
       this.setState({page: 'welcome', words: json.words},
-        () => this.setState({currentWord: this.state.words[0]}))}
+        () => {
+          if (this.state.words.length){
+          this.setState({currentWord: this.state.words[0]})
+            }})}
       )
-  }
+    }
 
 
   handlePageChange = (nextPage, response) => {

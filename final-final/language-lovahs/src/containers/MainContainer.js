@@ -13,20 +13,9 @@ export default class MainContainer extends React.Component{
 
   }
 
-<<<<<<< HEAD
-=======
-  componentDidMount(){
-    // const token = localStorage.getItem('token')
-    // if(token){
-    //   fetchUser(token)
-    //     .then(res => this.setState({languages: res}, console.log('res', res)))
-    // } else {
-    //   this.props.history.push('/login')
-    // }
-  }
+  
 
 
->>>>>>> 1c7ad50de0116c24bcfadc6afaf9a07b71095a69
 
   render(){
     return(

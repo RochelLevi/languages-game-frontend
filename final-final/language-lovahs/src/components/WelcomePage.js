@@ -7,7 +7,7 @@ const WelcomePage = (props) => {
         <div class="ui stacked secondary segment">
         <h2 class="ui image header">
           <div as="h4" class="content">
-              Let's get started!
+              <h1>Let's get started!</h1>
               Click bellow to begin the game
               <i class="arrow down icon"></i>
           </div>

@@ -35,7 +35,7 @@ class App extends Component {
 
   componentDidMount = () => {
     const token = localStorage.getItem('token')
-
+    console.log('mounting');
     if(token){
       getCurrentUser()
         .then(res => this.setState({auth: {currentUser: res}}))
@@ -46,19 +46,12 @@ class App extends Component {
     fetchLanguages().then(json => this.setState({languages: json}))
   }
 
-  // currentUserInfo = () => {
-  //   fetchUser(this.state.currentUserId)
-  //   .then(json => this.setState({currentUserInfo: json.users}))
-  // }
-
-
 
 
 
 
 
   render() {
-
     return (
         <div>
           <Navbar currentUser={this.state.auth.currentUser} handleLogout={this.handleLogout}/>
@@ -71,7 +64,12 @@ class App extends Component {
 
           />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} handleLogin={this.handleLogin}/> }/>
-          <Route path="/home" component={(routerProps) => <MainContainer {...routerProps} currentUser={this.state.auth.currentUser} allLanguages={this.state.languages} userLanguages={this.state.userLanguages}/>}/>
+          <Route path="/home" render={(routerProps) => {
+            const loggedIn = !!this.state.auth.currentUser.id
+            return loggedIn ?
+            <MainContainer {...routerProps} currentUser={this.state.auth.currentUser} allLanguages={this.state.languages} userLanguages={this.state.userLanguages}/> :
+            <Redirect to='/login'/> }}
+              />
           <Route path="/register" component={Register}/>
           <Route exact path="/languages/:id" component={() => <Game languages={this.state.laguages} history={this.props.history} currentUser={this.state.auth.currentUser} userLanguages={this.state.userLanguages}/>}/>
 
