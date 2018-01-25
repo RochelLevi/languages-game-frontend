@@ -1,3 +1,21 @@
+.background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -100;
+}
+
+.card-container {
+  background: rgba(204, 204, 204, 0.5)
+  }
+
+.banner {
+  width: 100%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .App {
   text-align: center;
 }

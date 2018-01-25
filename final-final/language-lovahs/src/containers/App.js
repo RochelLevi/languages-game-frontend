@@ -48,13 +48,10 @@ class App extends Component {
   }
 
 
-
-
-
-
   render() {
     return (
         <div>
+          <img class="background" src={require("../international.jpg")}></img>
           <Navbar currentUser={this.state.auth.currentUser} handleLogout={this.handleLogout}/>
           <Route
            exact path="/"
@@ -66,8 +63,8 @@ class App extends Component {
           />
         <Route exact path="/login" render={(routerProps) => {
           const loggedIn = !!localStorage['token']
-          return loggedIn ? <Login {...routerProps} handleLogin={this.handleLogin}/> :
-            <Redirect to='/home'/>
+          return loggedIn ? <Redirect to='/home'/> :
+          <Login {...routerProps} handleLogin={this.handleLogin}/>
             }
           }/>
           <Route path="/home" render={(routerProps) => {

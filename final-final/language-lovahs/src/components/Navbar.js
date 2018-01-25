@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 
 const Navbar = (props) => {
 
-  const loggedIn = !!props.currentUser.username
+  const loggedIn = !!localStorage['token']
 
   return(
     <div className={"ui inverted right menu"}>

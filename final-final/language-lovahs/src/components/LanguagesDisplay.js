@@ -33,7 +33,10 @@ export default class LanguagesDisplay extends React.Component {
                  <div class='header'>
                    {l.name}
                  </div>
-               <div class='ui bottom attached button' onClick={() => this.handleClick(4)}>
+                 <div >
+                   Total Points: {l.points}
+                 </div>
+               <div class='ui green bottom attached button' onClick={() => this.handleClick(4)}>
                  Play Game!
                </div>
            </div>
@@ -53,7 +56,8 @@ export default class LanguagesDisplay extends React.Component {
                  <div class='header'>
                    {l.name}
                  </div>
-               <div class='ui bottom attached button' onClick={() => this.handleClick(l.id)}>
+               <div><br></br></div>
+               <div class='ui green bottom attached button' onClick={() => this.handleClick(l.id)}>
                  Play Game!
                </div>
            </div>
@@ -68,11 +72,13 @@ export default class LanguagesDisplay extends React.Component {
       console.log(this.keepLearningDisplay())
       return (
         <div class="ui center aligned grid">
-         <div class="column">
-
-           <h2 class="ui header">
+         <div class="column card-container">
+           <img class="background" src={require('../international.jpg')}></img>
+           <h2 class="banner">
               <div class="content">
-                Welcome!
+                It's learning time!
+                <br></br>
+                <br></br>
               </div>
             </h2>
 
@@ -80,21 +86,35 @@ export default class LanguagesDisplay extends React.Component {
             <div class="two column row">
 
               <div class="column">
-                <div class="ui header">
-                  KEEP LEARNING
-                  </div>
-                  <div class="ui raised card">
+                <div class="banner">
+                    KEEP LEARNING
+                    <br></br>
+                  <br></br>
+              </div>
                     {this.keepLearningDisplay()}
-                </div>
               </div>
 
               <div class="column">
-                <div class="ui header">
+                <div class="banner">
                     START LEARNING
+                    <br></br>
+                    <br></br>
                 </div>
-                  <div class="ui raised card">
                     {this.startLearningDisplay()}
-                  </div>
+                    <div class='ui cards'>
+                      <div class='ui raised card'>
+                        <div class='content'>
+                            <div class='header'>
+                              Greek
+                            </div>
+                          <div><br></br></div>
+                          <div class='ui green bottom attached button' onClick={() => this.handleClick(4)}>
+                            Play Game!
+                          </div>
+                      </div>
+                    </div>
+                   </div>
+
               </div>
 
             </div>
